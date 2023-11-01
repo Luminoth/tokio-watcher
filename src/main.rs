@@ -157,7 +157,9 @@ enum ThingType {
 }
 
 trait Thing {
-    fn get_id(&self) -> usize;
+    fn get_internal_id(&self) -> usize;
+
+    fn get_external_id(&self) -> Option<usize>;
 
     fn get_type(&self) -> ThingType;
 }
@@ -168,8 +170,12 @@ struct ThingOne {
 }
 
 impl Thing for ThingOne {
-    fn get_id(&self) -> usize {
+    fn get_internal_id(&self) -> usize {
         self.id
+    }
+
+    fn get_external_id(&self) -> Option<usize> {
+        None
     }
 
     fn get_type(&self) -> ThingType {
@@ -191,8 +197,12 @@ struct ThingTwo {
 }
 
 impl Thing for ThingTwo {
-    fn get_id(&self) -> usize {
+    fn get_internal_id(&self) -> usize {
         self.id
+    }
+
+    fn get_external_id(&self) -> Option<usize> {
+        None
     }
 
     fn get_type(&self) -> ThingType {
